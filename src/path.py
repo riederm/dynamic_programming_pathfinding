@@ -15,7 +15,7 @@ class Path:
         """
         Adds a step to the path.
         """
-        self.steps.append(cell)
+        # TODO Implement this method
 
     def step_back(self):
         """
@@ -24,7 +24,7 @@ class Path:
         This method pops the last element from the steps list, effectively 
         stepping back to the previous position in the path.
         """
-        self.steps.pop()
+        # TODO Implement this method
    
     def contains(self, cell):
         """
@@ -36,7 +36,7 @@ class Path:
         Returns:
             bool: True if the cell is in the steps, False otherwise.
         """
-        return cell in self.steps
+        # TODO Implement this method
     
     def copy(self):
         """
@@ -45,9 +45,7 @@ class Path:
         Returns:
             Path: A new Path instance with the same steps as the current instance.
         """
-        new_path = Path()
-        new_path.steps = self.steps.copy()
-        return new_path
+        # TODO Implement this method
     
     def __len__(self):
         """
@@ -56,4 +54,4 @@ class Path:
         Returns:
             int: The number of steps.
         """
-        return len(self.steps)
+        # TODO Implement this method

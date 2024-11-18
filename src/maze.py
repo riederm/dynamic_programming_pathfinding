@@ -41,15 +41,7 @@ class Maze:
         Returns:
             List[Cell]: A list of neighboring cells that are not walls.
         """
-        neighbors = []
-        directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
-        for dx, dy in directions:
-            nx, ny = cell.x + dx, cell.y + dy
-            if 0 <= nx < len(self.grid[0]) and 0 <= ny < len(self.grid):
-                n = self.grid[ny][nx]
-                if not n.is_wall():
-                    neighbors.append(n)
-        return neighbors
+        # TODO Implement this method
     
     @classmethod
     def from_file(cls, filename):   
@@ -72,17 +64,9 @@ class Maze:
     
 
     def print_maze(self, path: Path):
-        def print_maze(self, path: Path):
-            """
-            Prints the maze to the console, marking the path with dots (.).
-            Args:
-                path (Path): The path to be marked in the maze.
-            """
-
-        for y, row in enumerate(self.grid):
-            for x, cell in enumerate(row):
-                if path.contains(cell):
-                    print('.', end='')
-                else:
-                    print(cell.cell_type, end='')
-            print()
+        """
+        Prints the maze to the console, marking the path with dots (.).
+        Args:
+            path (Path): The path to be marked in the maze.
+        """
+        # TODO Implement this method

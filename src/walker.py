@@ -30,26 +30,7 @@ class Walker:
         Returns:
             None: The function updates the best_path attribute with the shortest path found.
         """
-        if step.is_end():
-            if self.best_path is None or len(self.path) < len(self.best_path):
-                self.best_path = self.path.copy()
-            return
-        
-        if not self.best_path is None and len(self.best_path) < len(self.path):
-            return
-
-        for neighbor in maze.get_neighbors(step):
-            if self.path.contains(neighbor):
-                continue
-
-            if self.memory.get(neighbor) != None:
-                if self.memory.get(neighbor) < len(self.path):
-                    continue
-
-            self.memory[neighbor] = len(self.path)
-            self.path.add_step(neighbor)
-            self.find_path(maze, neighbor)
-            self.path.step_back()
+        # TODO Implement this method
             
 
 
