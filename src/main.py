@@ -2,7 +2,7 @@ from maze import Maze
 from walker import Walker
 
 def main():
-    maze = Maze.from_file('/workspaces/dynamic_programming_pathfinding/src/maze.txt')
+    maze = Maze.from_file('/workspaces/dynamic_programming_pathfinding/src/mazes/maze1.txt')
 
     walker = Walker(maze)
     walker.find_path(maze, maze.start)
