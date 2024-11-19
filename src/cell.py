@@ -17,3 +17,6 @@ class Cell:
 
     def is_end(self):
         return self.cell_type == 'E'
+    
+    def get_representation(self):
+        return self.cell_type

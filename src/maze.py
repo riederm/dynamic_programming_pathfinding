@@ -1,5 +1,6 @@
 from cell import Cell
 from path import Path
+from colorama import Fore, Back, Style
 
 class Maze:
     
@@ -31,7 +32,7 @@ class Maze:
                     return cell
 
     
-    def get_neighbors(self, cell):
+    def get_neighbors(self, cell: Cell):
         """
         Get the list of neighboring cells that are not walls.
 
@@ -41,10 +42,41 @@ class Maze:
         Returns:
             List[Cell]: A list of neighboring cells that are not walls.
         """
-        # TODO Implement this method
+        
+        max_row = len(self.grid)
+        max_cell = len(self.grid[0])
+
+        current_x = cell.x
+        current_y = cell.y
+
+        neighbors = []
+
+        # x neighbors
+        if (current_x > 0): # we are NOT at the left border
+            n = self.grid[current_y][current_x - 1]
+            if not n.is_wall():
+                neighbors.append(n)
+
+        if (current_x < max_cell): # we are NOT at the right border
+            n = self.grid[current_y][current_x + 1]
+            if not n.is_wall():
+                neighbors.append(n)
+
+        # y neighbors
+        if (current_y > 0): # we are NOT at the upper border
+            n = self.grid[current_y - 1][current_x]
+            if not n.is_wall():
+                neighbors.append(n)
+            
+        if (current_y < max_row): # we are NOT at the lower border
+            n = self.grid[current_y + 1][current_x]
+            if not n.is_wall():
+                neighbors.append(n)
+        return neighbors
+    
     
     @classmethod
-    def from_file(cls, filename):   
+    def from_file(cls, filename):
         """
         Create a Maze instance from a file.
 
@@ -69,4 +101,10 @@ class Maze:
         Args:
             path (Path): The path to be marked in the maze.
         """
-        # TODO Implement this method
+        for row in self.grid:
+            for cell in row:
+                if path.contains(cell):
+                     print(Back.GREEN + ".",end="")     
+                else:
+                    print(Back.BLACK + cell.get_representation(),end="")
+            print()

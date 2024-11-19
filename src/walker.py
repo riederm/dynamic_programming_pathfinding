@@ -21,7 +21,7 @@ class Walker:
         self.best_path = None
         self.memory = {}
 
-    def find_path(self, maze: Maze, step: Cell):
+    def find_path(self, current_pos: Cell):
         """
         Recursively finds the shortest path in a maze from the current step to the end.
         Args:
@@ -30,7 +30,41 @@ class Walker:
         Returns:
             None: The function updates the best_path attribute with the shortest path found.
         """
-        # TODO Implement this method
+        
+        if current_pos.is_end():
+            print("hurraaa")
+            self.best_path = self.path.copy()
+            return 
+        
+        options = self.maze.get_neighbors(current_pos)
+
+        for option in options:
+            if self.path.contains(option): # to NOT step back to a previous cell
+                continue
+
+            # while walking, we need to take a note, what the shortes path is
+            # that already reached option
+            # if our current path is longer thatn what we found so far, there is no
+            # point in taking this route
+
+
+            existingNote = self.memory.get(option)
+            if existingNote is None:
+                #we are the first one here
+                self.memory[option] = len(self.path)
+            elif existingNote > len(self.path):
+                #we are faster than previous solutions
+                self.memory[option] = len(self.path)
+            else:
+                # previous solution were faster
+                continue
+
+
+            self.path.add_step(option)
+            self.find_path(option)
+            self.path.step_back()
+
+
             
 
 
